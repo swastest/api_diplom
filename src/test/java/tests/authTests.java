@@ -7,6 +7,9 @@ import config.ManagerPropInterface;
 import config.TechPropInterface;
 import io.restassured.http.ContentType;
 import models.CreateOrUpdateNoteDto;
+import models.ResponseAuth;
+import models.ResponsePayment;
+import models.RequestPaymentsItem;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import tests.preRequest.PreRequestToken;
@@ -30,7 +33,7 @@ public class authTests {
                 .when().log().all()
                 .post(linkConfig.baseUrl()+"/rest/auth")
                 .then().log().all()
-                .extract();
+                .extract().as(ResponseAuth.class);
         int a =0;
 
     }
@@ -58,6 +61,27 @@ public class authTests {
                 .body("data.owner.id", is(configAdm.idAdminUser()))
                 .body("data.text", is(testTxt));
 
+    }
+
+    @Test
+    void paymentAdminToTech() {
+        RequestPaymentsItem item = new RequestPaymentsItem();
+        item.setDate(1653657301000l);
+        item.setDistance(0);
+        item.setName("");
+        item.setTeamId(0);
+        item.setUserId(129);
+        item.setTime(1653657301000l);
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(new RequestPaymentsItem[]{item})
+                .header("Authorization", PreRequestToken.getTokenAdmin())
+                .when()
+                .post("/rest/payments")
+                .then().log().all().statusCode(200)
+                .extract().as(ResponsePayment.class);
+        int a =0;
     }
 
 }
