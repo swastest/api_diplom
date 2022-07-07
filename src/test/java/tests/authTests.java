@@ -10,6 +10,7 @@ import models.CreateOrUpdateNoteDto;
 import models.ResponseAuth;
 import models.ResponsePayment;
 import models.RequestPaymentsItem;
+import models.respAuthModels.ResponseAuthLombok;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import tests.preRequest.PreRequestToken;
@@ -26,16 +27,15 @@ public class authTests {
 
     @Test
     void authAdmin(){
-        given()
+        ResponseAuthLombok resp =    given()
                 .contentType(ContentType.JSON)
                 .queryParam("password", configAdm.passwordAdmin())
                 .queryParam("email", configAdm.emailAdmin())
                 .when().log().all()
                 .post(linkConfig.baseUrl()+"/rest/auth")
                 .then().log().all()
-                .extract().as(ResponseAuth.class);
-        int a =0;
-
+                .extract().as(ResponseAuthLombok.class);
+int a=0;
     }
 
     @Test
