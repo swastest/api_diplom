@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,21 +13,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestPaymentsItem {
 
-	public class RequestPaymentsItem {
-
-		private Integer date;
+		private Long date;
 		private Integer distance;
 		private Integer teamId;
 		private String name;
-		private Integer time;
+		private Long time;
 		private Integer userId;
-
-	}
-
-
-	public class RequestPaymentsemInitiator {
-
-		private List<RequestPaymentsem> requestPaymentsem;
 
 	}
 

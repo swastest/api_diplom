@@ -78,9 +78,10 @@ public class authTests {
                 .body(new RequestPaymentsItem[]{item})
                 .header("Authorization", PreRequestToken.getTokenAdmin())
                 .when()
-                .post("/rest/payments")
+                .post(linkConfig.baseUrl()+"/rest/payments")
                 .then().log().all().statusCode(200)
-                .extract().as(ResponsePayment.class);
+                .extract();
+                //.as(ResponsePayment.class);
         int a =0;
     }
 
