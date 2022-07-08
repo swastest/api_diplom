@@ -38,9 +38,9 @@
         "ringCentralSenderNum": "+19293784143",
         "ringCentralExtension": "101",
         "ringCentralAccountId": "281250004",
-        "ringCentralSyncCallToken": "GQMAAAFzVqmzyAQAAAGBz7T6XwgAAAAAEMOI1A0AAAADYvruFQ4AAAFzVqmzyBEAGQAxADYANAAzADMANwAzADAAMAA4ADYAMwA0AF8AMQA0ADUANAA1ADUAMQA0ADAAMAA1EgAAAYHVKVX5FAEVABgAGgHiDTc5",
+        "ringCentralSyncCallToken": "GQMAAAFzVqwgAAAAAEMOI1A0AAAADYvruFQ4AAAFzVqmzyBEAGQAxADYANAAzADMANwAzADAAMAA4ADYAMwA0AF8AMQA0ADUANAA1ADUAMQA0ADAAMAA1EgAAAYHVKVX5FAEVABgAGgHiDTc5",
         "ringCentralSyncCallTime": 1657127864953,
-        "ringCentralSyncSmsToken": "AQEAAAAAAwAAAXNqdwH4BgAAAPoFAAABgdUorjATAAgAAAAAEMOI1AkCCgEZAAABgdUHa8ZVog7b",
+        "ringCentralSyncSmsToken": "AQEAAAAAAwAAAXNqPoFAAABgdUoAgAAAAAEMOI1AkCCgEZAAABgdUHa8ZVog7b",
         "ringCentralSyncSmsTime": 1657127822000,
         "clientNumber": 2
       },
@@ -60,7 +60,7 @@
       {
         "id": 284,
         "phoneNumber": "+19293784142",
-        "token": "fN9c-SKlRYevuAF4a8T3M_:APA91bFsyx7XmNdVwS99T7aD33jXgjrjwnYpUtBs_MjP0T58w-WT1g2utmu6cEUjD2oClCMyhM8hzotGfGahOAYEiB0A5T7HRlVnvgiMbpaQ7wuXjY_0Kljy0hol2ADHtAbNlwTTrp54",
+        "token": "fN9c-SKlRYevuAF4a8T3M_XmNdVwS99T7awnYpUtBs_MjP0T58w-WT1g2utmu6cEUjD2oClCMyhM8hzotGfGahOAYEiB0A5T7HRlVnvgiMbpaQ7wuXjY_0Kljy0hol2ADHtAbNlwTTrp54",
         "note": "",
         "main": true,
         "mobile": true
