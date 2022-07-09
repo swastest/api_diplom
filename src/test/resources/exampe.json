@@ -1,0 +1,75 @@
+{
+  "message": null,
+  "status": "SUCCESS",
+  "data": {
+    "id": 2,
+    "name": "Admin",
+    "email": "test@k.ru",
+    "address": "ул. Щапова, Казань, Респ. Татарстан, Россия",
+    "role": {
+      "id": 3,
+      "name": "Администратор",
+      "code": "admin"
+    },
+    "org": {
+      "id": 15,
+      "name": "test3",
+      "endLicenseDate": 1675026000000,
+      "note": "",
+      "removed": false,
+      "setting": {
+        "id": 176,
+        "displayMerchantButton": true,
+        "displayPromoterButton": true,
+        "callRecording": true,
+        "saveToPhoneBook": false,
+        "timeFormat": 12,
+        "phoneCode": "+1",
+        "firstHour": 0,
+        "orderTimeFormat": "24 hours",
+        "serviceRatingText": "Please rate your recent service [link]",
+        "taskConfirmationText": "Please confirm your appointment [link]",
+        "taskConfirmationLink": "Please contact us to correct appointment information. At least 24 hours before it is scheduled. By clicking \"confirm\" button you agree to our terms and conditions and cancellation policy, which is linked down below. ",
+        "serviceRatingLink": "",
+        "ringCentralLogin": "1929143",
+        "ringCentralPassword": "Simple_3",
+        "ringCentralClientId": "W98jGSeZZTGsgLaRQ",
+        "ringCentralClientSecret": "8JKn-rJx_XyrJNAeL3CCQhNTkq9EFrCyKkwAA",
+        "ringCentralSenderNum": "+19293784143",
+        "ringCentralExtension": "101",
+        "ringCentralAccountId": "281250004",
+        "ringCentralSyncCallToken": "GQMAAAQAAAGBz7T6XwgAAAAAEMOI1A0AAAADYvruFQ4AAAFzVqmzyBEAGQAxADYANAAzADMANwAzADAAMAA4ADYAMwA0AF8AMQA0ADUANAA1ADUAMQA0ADAAMAA1EgAAAYHj8vwYFAEVABgAGgFNZ3-R",
+        "ringCentralSyncCallTime": 1657375961241,
+        "ringCentralSyncSmsToken": "AQEAAAAwH4BgAAAPoFAAABgePyXukTAAgAAAAAEMOI1AkCCgEZAAABgePJqqE7ywZ1",
+        "ringCentralSyncSmsTime": 1657375921001,
+        "clientNumber": 2
+      },
+      "userCount": 0
+    },
+    "lat": 55.791786193847656,
+    "lon": 49.134742736816406,
+    "setting": {
+      "id": 28,
+      "displayPush": true
+    },
+    "removed": false,
+    "note": null,
+    "active": true,
+    "showInCalendar": true,
+    "phones": [
+      {
+        "id": 284,
+        "phoneNumber": "+19293784142",
+        "token": "fN9c-SKlRYevuAF4a8T3M_:9T7aD33jXgjrjwnYpUtBs_MjP0T58w-WT1g2utmu6cEUjD2oClCMyhM8hzotGfGahOAYEiB0A5T7HRlVnvgiMbpaQ7wuXjY_0Kljy0hol2ADHtAbNlwTTrp54",
+        "note": "",
+        "main": true,
+        "mobile": true
+      }
+    ],
+    "deviceType": {
+      "id": 1,
+      "name": "Personal",
+      "code": "personal_device"
+    }
+  }
+}
