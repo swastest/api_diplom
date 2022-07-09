@@ -1,4 +1,4 @@
-package preRequest;
+package preRequests;
 
 import com.github.javafaker.Faker;
 import config.TeamPropInterface;

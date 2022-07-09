@@ -1,4 +1,4 @@
-package preRequest;
+package preRequests;
 
 import config.AdminPropInterface;
 import config.ManagerPropInterface;
