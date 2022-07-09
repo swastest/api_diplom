@@ -1,37 +1,18 @@
-package tests.preRequest;
+package preRequest;
 
 import com.github.javafaker.Faker;
-import config.LinkPropInterface;
 import config.TeamPropInterface;
 import config.TechPropInterface;
-import io.restassured.http.ContentType;
 import models.CreateOrUpdateNoteDto;
 import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.given;
+import static tests.specification.Specs.request;
+import static tests.specification.Specs.response200;
 
-public  class PreRequestCreateNote {
+public class PreRequestCreateNote {
 
     static public Integer getIdNewNoteTeamFromAdmin() {
-        LinkPropInterface linkConfig = ConfigFactory.create(LinkPropInterface.class);
-        TeamPropInterface teamConf = ConfigFactory.create(TeamPropInterface.class);
-        Long epoch = System.currentTimeMillis();
-        Faker faker = new Faker();
-        String testTxt = faker.backToTheFuture().quote();
-
-        CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, teamConf.teamId(), 0, testTxt, 0);
-       Integer a = given()
-                .header("Authorization", PreRequestToken.getTokenAdmin())
-                .body(body)
-                .contentType(ContentType.JSON)
-                .when()
-                .put(linkConfig.baseUrl() + "/rest/notes")
-                .then().log().all()
-                .extract().jsonPath().get("data.id");
-        return a;
-    }
-    static public Integer getIdNewNoteTeamFromManager() {
-        LinkPropInterface linkConfig = ConfigFactory.create(LinkPropInterface.class);
         TeamPropInterface teamConf = ConfigFactory.create(TeamPropInterface.class);
         Long epoch = System.currentTimeMillis();
         Faker faker = new Faker();
@@ -39,31 +20,51 @@ public  class PreRequestCreateNote {
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, teamConf.teamId(), 0, testTxt, 0);
         Integer a = given()
-                .header("Authorization", PreRequestToken.getTokenManager())
+                .spec(request)
+                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
                 .body(body)
-                .contentType(ContentType.JSON)
                 .when()
-                .put(linkConfig.baseUrl() + "/rest/notes")
-                .then().log().all()
+                .put("/notes")
+                .then()
+                .spec(response200)
+                .extract().jsonPath().get("data.id");
+        return a;
+    }
+
+    static public Integer getIdNewNoteTeamFromManager() {
+        TeamPropInterface teamConf = ConfigFactory.create(TeamPropInterface.class);
+        Long epoch = System.currentTimeMillis();
+        Faker faker = new Faker();
+        String testTxt = faker.backToTheFuture().quote();
+
+        CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, teamConf.teamId(), 0, testTxt, 0);
+        Integer a = given()
+                .spec(request)
+                .header("Authorization", PreRequestGetTokens.getTokenManager())
+                .body(body)
+                .when()
+                .put("/notes")
+                .then()
+                .spec(response200)
                 .extract().jsonPath().get("data.id");
         return a;
     }
 
     static public Integer getIdNewNoteTechToSelf() {
-        LinkPropInterface linkConfig = ConfigFactory.create(LinkPropInterface.class);
         TechPropInterface techConfig = ConfigFactory.create(TechPropInterface.class);
         Long epoch = System.currentTimeMillis();
         Faker faker = new Faker();
         String testTxt = faker.backToTheFuture().quote();
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, 0, 0, testTxt, techConfig.idTechUser());
-       Integer a = given()
-                .header("Authorization", PreRequestToken.getTokenTech())
+        Integer a = given()
+                .spec(request)
+                .header("Authorization", PreRequestGetTokens.getTokenTech())
                 .body(body)
-                .contentType(ContentType.JSON)
                 .when()
-                .put(linkConfig.baseUrl() + "/rest/notes")
-                .then().log().all()
+                .put("/notes")
+                .then()
+                .spec(response200)
                 .extract().jsonPath().get("data.id");
         return a;
     }

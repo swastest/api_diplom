@@ -2,44 +2,42 @@ package tests;
 
 import com.github.javafaker.Faker;
 import config.AdminPropInterface;
-import config.LinkPropInterface;
-import config.ManagerPropInterface;
 import config.TechPropInterface;
-import io.restassured.http.ContentType;
 import models.CreateOrUpdateNoteDto;
-import models.ResponseAuth;
-import models.ResponsePayment;
 import models.RequestPaymentsItem;
 import models.respAuthModels.ResponseAuthLombok;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tests.preRequest.PreRequestToken;
+import preRequest.PreRequestGetTokens;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import static tests.specification.Specs.request;
+import static tests.specification.Specs.response200;
 
-public class authTests {
-    static LinkPropInterface linkConfig = ConfigFactory.create(LinkPropInterface.class);
+public class AuthTests {
     static AdminPropInterface configAdm = ConfigFactory.create(AdminPropInterface.class);
-    static ManagerPropInterface configMng = ConfigFactory.create(ManagerPropInterface.class);
     static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
 
     @Test
-    void authAdmin(){
-        ResponseAuthLombok resp =    given()
-                .contentType(ContentType.JSON)
+    void authAdmin() {
+        ResponseAuthLombok resp = given()
+                .spec(request)
                 .queryParam("password", configAdm.passwordAdmin())
                 .queryParam("email", configAdm.emailAdmin())
                 .when().log().all()
-                .post(linkConfig.baseUrl()+"/rest/auth")
-                .then().log().all()
+                .post("/auth")
+                .then()
+                .spec(response200)
                 .extract().as(ResponseAuthLombok.class);
-int a=0;
+        Assertions.assertNotNull(resp.getData().getPhones().get(0).getToken());
+        Assertions.assertEquals(configAdm.emailAdmin(), resp.getData().getEmail());
     }
 
     @Test
-    void simpleTest(){
+    void simpleTest() {
         Long epoch = System.currentTimeMillis();
         Faker faker = new Faker();
         String testTxt = faker.backToTheFuture().quote();
@@ -47,13 +45,13 @@ int a=0;
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, 0,
                 0, testTxt, configTech.idTechUser());
         given()
-                .header("Authorization", PreRequestToken.getTokenAdmin())
+                .spec(request)
+                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
                 .body(body)
-                .contentType(ContentType.JSON)
                 .when().log().body()
-                .put(linkConfig.baseUrl()+"/rest/notes")
-                .then().log().all()
-                .statusCode(200)
+                .put("/notes")
+                .then()
+                .spec(response200)
                 .body("status", is("SUCCESS"))
                 .body("data", notNullValue())
                 .body("data.id", notNullValue())
@@ -74,15 +72,16 @@ int a=0;
         item.setTime(1653657301000l);
 
         given()
-                .contentType(ContentType.JSON)
+                .spec(request)
                 .body(new RequestPaymentsItem[]{item})
-                .header("Authorization", PreRequestToken.getTokenAdmin())
+                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
                 .when()
-                .post(linkConfig.baseUrl()+"/rest/payments")
-                .then().log().all().statusCode(200)
+                .post("/payments")
+                .then()
+                .spec(response200)
                 .extract();
-                //.as(ResponsePayment.class);
-        int a =0;
+        //.as(ResponsePayment.class);
+        int a = 0;
     }
 
 }
