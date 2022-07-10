@@ -1,6 +1,7 @@
 package tests;
 
 import config.TechPropInterface;
+import io.qameta.allure.AllureId;
 import models.RequestPaymentsItem;
 import models.addTypePayment.AddTypeCashModel;
 import models.addTypePayment.ItemsItem;
@@ -26,6 +27,7 @@ public class PaymentsTests {
     static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
 
     @ParameterizedTest(name = "{1} добавляет оплату с указанием типа оплаты")
+    @AllureId("11043")
     @MethodSource(value = "helpers.Params#preRequestParamTokenAdminManagerTech")
     void addsPayment(String value, String forNameTest) {
         List<ItemsItem> list = new ArrayList<>();
@@ -53,6 +55,7 @@ public class PaymentsTests {
     }
 
     @Test
+    @AllureId("11044")
     @DisplayName("Оплата проставлена Админом технику")
     void addPaymentAdminToTech() {
         String paymentComment = "Хорошая оплата такая";

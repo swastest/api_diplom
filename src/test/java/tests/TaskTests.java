@@ -2,6 +2,7 @@ package tests;
 
 import config.ClientPropInterface;
 import config.TechPropInterface;
+import io.qameta.allure.AllureId;
 import models.RequestAddTask;
 import models.respNewTask.ResponseAddNewTask;
 import org.aeonbits.owner.ConfigFactory;
@@ -22,6 +23,7 @@ import static tests.specification.Specs.response200;
 public class TaskTests {
 
     @Test
+    @AllureId("11045")
     @DisplayName("Админ добавляет новую задачу технику")
     void adminAddNewTask() {
         ClientPropInterface configClient = ConfigFactory.create(ClientPropInterface.class);
@@ -56,8 +58,10 @@ public class TaskTests {
         Assertions.assertEquals(taskName, resp.getData().getDescription());
     }
 
-    @DisplayName("Админ меняет статус новой задачи на 'in_progress'")
+
     @Test
+    @AllureId("11046")
+    @DisplayName("Админ меняет статус новой задачи на 'in_progress'")
     void AdminEditingTaskStatusInProgress() {
         Integer idTask = PreRequestTask.getIdTask();
         given()

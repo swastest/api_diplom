@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.AllureId;
 import models.respAuthModels.ResponseAuthLombok;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
@@ -13,6 +14,7 @@ import static tests.specification.Specs.response200;
 @Tag("auth")
 public class AuthTests {
     @ParameterizedTest(name = "{2} авторизируется по логину и паролю")
+    @AllureId("11041")
     @MethodSource(value = "helpers.Params#loginPasswordParamsAdminManagerTech")
     void authTests(String password, String email, String forNameTest) {
         ResponseAuthLombok resp = given()

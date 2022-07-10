@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import config.TechPropInterface;
+import io.qameta.allure.AllureId;
 import models.CreateOrUpdateNoteDto;
 import models.respAddNoteToTech.ResponseAddNote;
 import org.aeonbits.owner.ConfigFactory;
@@ -19,6 +20,7 @@ public class NotesTests {
     static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
 
     @ParameterizedTest(name = "{2} создает заметку для техника")
+    @AllureId("11042")
     @MethodSource(value = "helpers.Params#preRequestParamTokenAdminManagerAndUserId")
     void addNoteForTech(String token, Integer userId, String forNameTest) {
         Long epoch = System.currentTimeMillis();
