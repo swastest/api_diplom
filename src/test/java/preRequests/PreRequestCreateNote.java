@@ -19,7 +19,7 @@ public class PreRequestCreateNote {
         String testTxt = faker.backToTheFuture().quote();
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, teamConf.teamId(), 0, testTxt, 0);
-        Integer a = given()
+        return given()
                 .spec(request)
                 .header("Authorization", PreRequestGetTokens.getTokenAdmin())
                 .body(body)
@@ -28,7 +28,6 @@ public class PreRequestCreateNote {
                 .then()
                 .spec(response200)
                 .extract().jsonPath().get("data.id");
-        return a;
     }
 
     static public Integer getIdNewNoteTeamFromManager() {
@@ -38,7 +37,7 @@ public class PreRequestCreateNote {
         String testTxt = faker.backToTheFuture().quote();
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, teamConf.teamId(), 0, testTxt, 0);
-        Integer a = given()
+        return given()
                 .spec(request)
                 .header("Authorization", PreRequestGetTokens.getTokenManager())
                 .body(body)
@@ -47,7 +46,6 @@ public class PreRequestCreateNote {
                 .then()
                 .spec(response200)
                 .extract().jsonPath().get("data.id");
-        return a;
     }
 
     static public Integer getIdNewNoteTechToSelf() {
@@ -57,7 +55,7 @@ public class PreRequestCreateNote {
         String testTxt = faker.backToTheFuture().quote();
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, 0, 0, testTxt, techConfig.idTechUser());
-        Integer a = given()
+        return given()
                 .spec(request)
                 .header("Authorization", PreRequestGetTokens.getTokenTech())
                 .body(body)
@@ -66,7 +64,6 @@ public class PreRequestCreateNote {
                 .then()
                 .spec(response200)
                 .extract().jsonPath().get("data.id");
-        return a;
     }
 
 }

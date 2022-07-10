@@ -27,7 +27,7 @@ public class PreRequestTask {
         body.setUserId(configTech.idTechUser());
         body.setId(0);
         body.setDescription("Новая задача");
-        Integer response = given()
+        return given()
                 .spec(request)
                 .header("Authorization", PreRequestGetTokens.getTokenAdmin())
                 .body(body)
@@ -37,11 +37,7 @@ public class PreRequestTask {
                 .put("/tasks")
                 .then()
                 .extract().path("data.id");
-        System.out.println("ЗАДАЧА НОМЕР === " +response);
-        return response;
     }
-
-
 
     static public void deleteTask(Integer value) {
         given()
