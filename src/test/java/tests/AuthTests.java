@@ -13,7 +13,7 @@ import static tests.specification.Specs.response200;
 @Tag("auth")
 public class AuthTests {
     @ParameterizedTest(name = "{2} авторизируется по логину и паролю")
-    @MethodSource(value = "helpers.Params#LoginPasswordParamsAdminManagerTech")
+    @MethodSource(value = "helpers.Params#loginPasswordParamsAdminManagerTech")
     void authTests(String password, String email, String forNameTest) {
         ResponseAuthLombok resp = given()
                 .spec(request)
