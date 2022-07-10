@@ -15,7 +15,7 @@ public class Params {
     static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
     static ManagerPropInterface confMng = ConfigFactory.create(ManagerPropInterface.class);
 
-    static Stream<Arguments> LoginPasswordParamsAdminManagerTech() {
+    static Stream<Arguments> loginPasswordParamsAdminManagerTech() {
         return Stream.of
                 (Arguments.of(configAdm.passwordAdmin(), configAdm.emailAdmin(), "Админ"),
                         Arguments.of(confMng.passwordManager(), confMng.emailManager(), "Менеджер"),
