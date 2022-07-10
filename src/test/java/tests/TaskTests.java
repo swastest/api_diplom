@@ -7,6 +7,7 @@ import models.respNewTask.ResponseAddNewTask;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import preRequests.PreRequestGetTokens;
 import preRequests.PreRequestTask;
@@ -17,11 +18,12 @@ import static org.hamcrest.Matchers.is;
 import static tests.specification.Specs.request;
 import static tests.specification.Specs.response200;
 
+@Tag("task")
 public class TaskTests {
 
     @Test
     @DisplayName("Админ добавляет новую задачу технику")
-    void adminAddNewTask(){
+    void adminAddNewTask() {
         ClientPropInterface configClient = ConfigFactory.create(ClientPropInterface.class);
         TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
         Long epoch = System.currentTimeMillis();
@@ -35,7 +37,7 @@ public class TaskTests {
         body.setCustomerAvailableEndDate(epochPlus);
         body.setClientId(configClient.idClient());
         body.setTeamId(0);
-        body.setUserId(128);
+        body.setUserId(configTech.idTechUser());
         body.setId(0);
         body.setDescription(taskName);
         ResponseAddNewTask resp = given()

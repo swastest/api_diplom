@@ -2,6 +2,7 @@ package tests;
 
 import models.respAuthModels.ResponseAuthLombok;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -9,9 +10,10 @@ import static io.restassured.RestAssured.given;
 import static tests.specification.Specs.request;
 import static tests.specification.Specs.response200;
 
+@Tag("auth")
 public class AuthTests {
     @ParameterizedTest( name = "{2} авторизируется по логину и паролю")
-    @MethodSource(value = "tests.Params#LoginPasswordParamsAdminManagerTech")
+    @MethodSource(value = "helpers.Params#LoginPasswordParamsAdminManagerTech")
     void authTests(String password, String email, String forNameTest) {
         ResponseAuthLombok resp = given()
                 .spec(request)
@@ -25,6 +27,5 @@ public class AuthTests {
         Assertions.assertNotNull(resp.getData().getPhones().get(0).getToken());
         Assertions.assertEquals(email, resp.getData().getEmail());
     }
-
 
 }

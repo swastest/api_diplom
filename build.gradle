@@ -11,7 +11,10 @@ def junitVersion = "5.8.2",
     slfVersion = "1.7.36",
     allureVersion = "2.17.3",
     restAssuredVersion = "4.5.1",
-    lombokVersion = "1.18.10"
+    lombokVersion = "1.18.10",
+    ownerVersion = "1.0.4",
+    jacksonVersion = "2.9.5",
+    javaFakerVersion = "1.0.2"
 
 
 allure {
@@ -38,10 +41,9 @@ dependencies {
             "org.projectlombok:lombok:$lombokVersion",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
-            'org.aeonbits.owner:owner:1.0.4',
-            'com.fasterxml.jackson.core:jackson-databind:2.9.5',
-            'com.google.code.gson:gson:2.8.9',
-            'com.github.javafaker:javafaker:1.0.2'
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion"
     )
 }
 
@@ -83,26 +85,20 @@ task payments(type: Test) {
     }
 }
 
-task timeline(type: Test) {
-    useJUnitPlatform {
-        includeTags "timeline"
-    }
-}
-
 task note(type: Test) {
     useJUnitPlatform {
         includeTags "note"
     }
 }
 
-task sendReminder(type: Test) {
-    useJUnitPlatform {
-        includeTags "sendReminder"
-    }
-}
-
 task task(type: Test) {
     useJUnitPlatform {
         includeTags "task"
+    }
+}
+
+task auth(type: Test) {
+    useJUnitPlatform {
+        includeTags "auth"
     }
 }

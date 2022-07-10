@@ -1,4 +1,4 @@
-package tests;
+package helpers;
 
 import config.AdminPropInterface;
 import config.ManagerPropInterface;
