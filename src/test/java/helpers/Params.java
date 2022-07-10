@@ -10,6 +10,7 @@ import preRequests.PreRequestGetTokens;
 import java.util.stream.Stream;
 
 public class Params {
+
     static AdminPropInterface configAdm = ConfigFactory.create(AdminPropInterface.class);
     static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
     static ManagerPropInterface confMng = ConfigFactory.create(ManagerPropInterface.class);
