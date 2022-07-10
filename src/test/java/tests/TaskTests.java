@@ -58,7 +58,6 @@ public class TaskTests {
         Assertions.assertEquals(taskName, resp.getData().getDescription());
     }
 
-
     @Test
     @AllureId("11046")
     @DisplayName("Админ меняет статус новой задачи на 'in_progress'")
