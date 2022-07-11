@@ -1,6 +1,5 @@
 package tests.specification;
 
-import config.AdminPropInterface;
 import config.LinkPropInterface;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
