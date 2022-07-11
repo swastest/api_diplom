@@ -92,6 +92,9 @@ gradle clean task - будут произведены проверки связ�
 <img title="Allure Test Ops Page" src="images/contentImg/testOps_1.jpg">
 </p>
 
+
+***
+
 ## :robot: Отчет в Telegram
 <p align="center">
 <img title="Telegram notification message" src="images/contentImg/tg.jpg">
