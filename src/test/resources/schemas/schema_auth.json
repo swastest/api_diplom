@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "null"
+    },
+    "status": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "code"
+          ]
+        },
+        "org": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "endLicenseDate": {
+              "type": "integer"
+            },
+            "note": {
+              "type": "string"
+            },
+            "removed": {
+              "type": "boolean"
+            },
+            "setting": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "displayMerchantButton": {
+                  "type": "boolean"
+                },
+                "displayPromoterButton": {
+                  "type": "boolean"
+                },
+                "callRecording": {
+                  "type": "boolean"
+                },
+                "saveToPhoneBook": {
+                  "type": "boolean"
+                },
+                "timeFormat": {
+                  "type": "integer"
+                },
+                "phoneCode": {
+                  "type": "string"
+                },
+                "firstHour": {
+                  "type": "integer"
+                },
+                "orderTimeFormat": {
+                  "type": "string"
+                },
+                "serviceRatingText": {
+                  "type": "string"
+                },
+                "taskConfirmationText": {
+                  "type": "string"
+                },
+                "taskConfirmationLink": {
+                  "type": "string"
+                },
+                "serviceRatingLink": {
+                  "type": "string"
+                },
+                "ringCentralLogin": {
+                  "type": "string"
+                },
+                "ringCentralPassword": {
+                  "type": "string"
+                },
+                "ringCentralClientId": {
+                  "type": "string"
+                },
+                "ringCentralClientSecret": {
+                  "type": "string"
+                },
+                "ringCentralSenderNum": {
+                  "type": "string"
+                },
+                "ringCentralExtension": {
+                  "type": "string"
+                },
+                "ringCentralAccountId": {
+                  "type": "string"
+                },
+                "ringCentralSyncCallToken": {
+                  "type": "string"
+                },
+                "ringCentralSyncCallTime": {
+                  "type": "integer"
+                },
+                "ringCentralSyncSmsToken": {
+                  "type": "string"
+                },
+                "ringCentralSyncSmsTime": {
+                  "type": "integer"
+                },
+                "clientNumber": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "displayMerchantButton",
+                "displayPromoterButton",
+                "callRecording",
+                "saveToPhoneBook",
+                "timeFormat",
+                "phoneCode",
+                "firstHour",
+                "orderTimeFormat",
+                "serviceRatingText",
+                "taskConfirmationText",
+                "taskConfirmationLink",
+                "serviceRatingLink",
+                "ringCentralLogin",
+                "ringCentralPassword",
+                "ringCentralClientId",
+                "ringCentralClientSecret",
+                "ringCentralSenderNum",
+                "ringCentralExtension",
+                "ringCentralAccountId",
+                "ringCentralSyncCallToken",
+                "ringCentralSyncCallTime",
+                "ringCentralSyncSmsToken",
+                "ringCentralSyncSmsTime",
+                "clientNumber"
+              ]
+            },
+            "userCount": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "endLicenseDate",
+            "note",
+            "removed",
+            "setting",
+            "userCount"
+          ]
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "setting": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "displayPush": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "id",
+            "displayPush"
+          ]
+        },
+        "removed": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "showInCalendar": {
+          "type": "boolean"
+        },
+        "phones": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "null"
+                },
+                "main": {
+                  "type": "boolean"
+                },
+                "mobile": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "phoneNumber",
+                "token",
+                "note",
+                "main",
+                "mobile"
+              ]
+            }
+          ]
+        },
+        "deviceType": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "code"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "address",
+        "role",
+        "org",
+        "lat",
+        "lon",
+        "setting",
+        "removed",
+        "note",
+        "active",
+        "showInCalendar",
+        "phones",
+        "deviceType"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "status",
+    "data"
+  ]
+}

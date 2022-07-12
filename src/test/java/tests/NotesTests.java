@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static tests.specification.Specs.request;
 import static tests.specification.Specs.response200;
 
@@ -34,6 +35,7 @@ public class NotesTests {
                 .put("/notes")
                 .then()
                 .spec(response200)
+                .body(matchesJsonSchemaInClasspath("schemas/schema_note.json"))
                 .extract().as(ResponseAddNote.class);
         Assertions.assertNotNull(resp.getData().getId());
         Assertions.assertEquals(resp.getData().getUser().getId(), ConfigCenter.configTech.idTechUser());

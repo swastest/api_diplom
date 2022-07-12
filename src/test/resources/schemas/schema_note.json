@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "null"
+    },
+    "status": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "role": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "code"
+              ]
+            },
+            "org": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "null"
+                },
+                "endLicenseDate": {
+                  "type": "null"
+                },
+                "note": {
+                  "type": "null"
+                },
+                "removed": {
+                  "type": "boolean"
+                },
+                "setting": {
+                  "type": "null"
+                },
+                "userCount": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "endLicenseDate",
+                "note",
+                "removed",
+                "setting",
+                "userCount"
+              ]
+            },
+            "lat": {
+              "type": "number"
+            },
+            "lon": {
+              "type": "number"
+            },
+            "setting": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "displayPush": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "displayPush"
+              ]
+            },
+            "removed": {
+              "type": "boolean"
+            },
+            "note": {
+              "type": "string"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "showInCalendar": {
+              "type": "boolean"
+            },
+            "phones": {
+              "type": "null"
+            },
+            "deviceType": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "code"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "email",
+            "address",
+            "role",
+            "org",
+            "lat",
+            "lon",
+            "setting",
+            "removed",
+            "note",
+            "active",
+            "showInCalendar",
+            "phones",
+            "deviceType"
+          ]
+        },
+        "team": {
+          "type": "null"
+        },
+        "text": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer"
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "null"
+            },
+            "address": {
+              "type": "null"
+            },
+            "role": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "null"
+                },
+                "code": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "code"
+              ]
+            },
+            "org": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "null"
+                },
+                "endLicenseDate": {
+                  "type": "null"
+                },
+                "note": {
+                  "type": "null"
+                },
+                "removed": {
+                  "type": "boolean"
+                },
+                "setting": {
+                  "type": "null"
+                },
+                "userCount": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "endLicenseDate",
+                "note",
+                "removed",
+                "setting",
+                "userCount"
+              ]
+            },
+            "lat": {
+              "type": "number"
+            },
+            "lon": {
+              "type": "number"
+            },
+            "setting": {
+              "type": "null"
+            },
+            "removed": {
+              "type": "boolean"
+            },
+            "note": {
+              "type": "null"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "showInCalendar": {
+              "type": "boolean"
+            },
+            "phones": {
+              "type": "null"
+            },
+            "deviceType": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "email",
+            "address",
+            "role",
+            "org",
+            "lat",
+            "lon",
+            "setting",
+            "removed",
+            "note",
+            "active",
+            "showInCalendar",
+            "phones",
+            "deviceType"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "user",
+        "team",
+        "text",
+        "date",
+        "owner"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "status",
+    "data"
+  ]
+}
