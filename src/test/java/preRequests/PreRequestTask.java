@@ -1,9 +1,7 @@
 package preRequests;
 
-import config.ClientPropInterface;
-import config.TechPropInterface;
+import config.ConfigCenter;
 import models.RequestAddTask;
-import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -12,19 +10,16 @@ import static tests.specification.Specs.response200;
 
 public class PreRequestTask {
     static public Integer getIdTask() {
-        ClientPropInterface configClient = ConfigFactory.create(ClientPropInterface.class);
-        TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
         Long epoch = System.currentTimeMillis();
         Long epochPlus = System.currentTimeMillis() + 3600000;
-
         RequestAddTask body = new RequestAddTask();
         body.setJobEndDate(epochPlus);
         body.setJobStartDate(epoch);
         body.setCustomerAvailableStartDate(epoch);
         body.setCustomerAvailableEndDate(epochPlus);
-        body.setClientId(configClient.idClient());
+        body.setClientId(ConfigCenter.configClient.idClient());
         body.setTeamId(0);
-        body.setUserId(configTech.idTechUser());
+        body.setUserId(ConfigCenter.configTech.idTechUser());
         body.setId(0);
         body.setDescription("Новая задача");
         return given()
@@ -50,5 +45,4 @@ public class PreRequestTask {
                 .then()
                 .spec(response200);
     }
-
 }

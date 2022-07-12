@@ -1,11 +1,10 @@
 package tests;
 
-import config.TechPropInterface;
+import config.ConfigCenter;
 import io.qameta.allure.AllureId;
 import models.RequestPaymentsItem;
 import models.addTypePayment.AddTypeCashModel;
 import models.addTypePayment.ItemsItem;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -24,23 +23,24 @@ import static tests.specification.Specs.response200;
 
 @Tag("payments")
 public class PaymentsTests {
-    static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
-
     @ParameterizedTest(name = "{1} добавляет оплату с указанием типа оплаты")
     @AllureId("11043")
     @MethodSource(value = "helpers.Params#preRequestParamTokenAdminManagerTech")
     void addsPayment(String value, String forNameTest) {
         List<ItemsItem> list = new ArrayList<>();
-        ItemsItem pyItem1 = new ItemsItem();
-        pyItem1.setAmount(10);
-        pyItem1.setType("cash");
-        ItemsItem pyItem2 = new ItemsItem();
-        pyItem2.setAmount(15);
-        pyItem2.setType("credit");
-        list.add(pyItem1);
-        list.add(pyItem2);
-
+        ItemsItem paymentItem1 = new ItemsItem();
         AddTypeCashModel body = new AddTypeCashModel();
+        ItemsItem paymentItem2 = new ItemsItem();
+
+        paymentItem1.setAmount(10);
+        paymentItem1.setType("cash");
+
+        paymentItem2.setAmount(15);
+        paymentItem2.setType("credit");
+
+        list.add(paymentItem1);
+        list.add(paymentItem2);
+
         body.setItems(list);
         given()
                 .spec(request)
@@ -66,7 +66,7 @@ public class PaymentsTests {
         item.setDistance(0);
         item.setName(paymentComment);
         item.setTeamId(0);
-        item.setUserId(configTech.idTechUser());
+        item.setUserId(ConfigCenter.configTech.idTechUser());
         item.setTime(epoch);
 
         given()
@@ -80,6 +80,5 @@ public class PaymentsTests {
                 .body("status", is("SUCCESS"))
                 .body("data", notNullValue())
                 .body("data.items", notNullValue());
-
     }
 }

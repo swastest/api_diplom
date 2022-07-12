@@ -1,11 +1,10 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import config.TechPropInterface;
+import config.ConfigCenter;
 import io.qameta.allure.AllureId;
 import models.CreateOrUpdateNoteDto;
 import models.respAddNoteToTech.ResponseAddNote;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,8 +16,6 @@ import static tests.specification.Specs.response200;
 
 @Tag("note")
 public class NotesTests {
-    static TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
-
     @ParameterizedTest(name = "{2} создает заметку для техника")
     @AllureId("11042")
     @MethodSource(value = "helpers.Params#preRequestParamTokenAdminManagerAndUserId")
@@ -28,7 +25,7 @@ public class NotesTests {
         String testTxt = faker.backToTheFuture().quote();
 
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, 0,
-                0, testTxt, configTech.idTechUser());
+                0, testTxt, ConfigCenter.configTech.idTechUser());
         ResponseAddNote resp = given()
                 .spec(request)
                 .header("Authorization", token)
@@ -39,7 +36,7 @@ public class NotesTests {
                 .spec(response200)
                 .extract().as(ResponseAddNote.class);
         Assertions.assertNotNull(resp.getData().getId());
-        Assertions.assertEquals(resp.getData().getUser().getId(), configTech.idTechUser());
+        Assertions.assertEquals(resp.getData().getUser().getId(), ConfigCenter.configTech.idTechUser());
         Assertions.assertEquals(resp.getStatus(), "SUCCESS");
         Assertions.assertEquals(resp.getData().getText(), testTxt);
         Assertions.assertEquals(resp.getData().getOwner().getId(), userId);

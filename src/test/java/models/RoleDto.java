@@ -1,11 +1,12 @@
-package models.respAuthModels;
+package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import models.SettingDto;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Setting extends SettingDto {
-
+public class RoleDto {
+    private String code;
+    private Object name;
+    private Integer id;
 }

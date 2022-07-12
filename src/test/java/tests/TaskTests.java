@@ -1,11 +1,9 @@
 package tests;
 
-import config.ClientPropInterface;
-import config.TechPropInterface;
+import config.ConfigCenter;
 import io.qameta.allure.AllureId;
 import models.RequestAddTask;
 import models.respNewTask.ResponseAddNewTask;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -21,13 +19,10 @@ import static tests.specification.Specs.response200;
 
 @Tag("task")
 public class TaskTests {
-
     @Test
     @AllureId("11045")
     @DisplayName("Админ добавляет новую задачу технику")
     void adminAddNewTask() {
-        ClientPropInterface configClient = ConfigFactory.create(ClientPropInterface.class);
-        TechPropInterface configTech = ConfigFactory.create(TechPropInterface.class);
         Long epoch = System.currentTimeMillis();
         Long epochPlus = System.currentTimeMillis() + 3600000;
         String taskName = "Админ назначил - значит надо!";
@@ -37,9 +32,9 @@ public class TaskTests {
         body.setJobStartDate(epoch);
         body.setCustomerAvailableStartDate(epoch);
         body.setCustomerAvailableEndDate(epochPlus);
-        body.setClientId(configClient.idClient());
+        body.setClientId(ConfigCenter.configClient.idClient());
         body.setTeamId(0);
-        body.setUserId(configTech.idTechUser());
+        body.setUserId(ConfigCenter.configTech.idTechUser());
         body.setId(0);
         body.setDescription(taskName);
         ResponseAddNewTask resp = given()
@@ -54,7 +49,7 @@ public class TaskTests {
                 .spec(response200)
                 .extract().as(ResponseAddNewTask.class);
         PreRequestTask.deleteTask(resp.getData().getId());
-        Assertions.assertEquals(configClient.idClient(), resp.getData().getClient().getId());
+        Assertions.assertEquals(ConfigCenter.configClient.idClient(), resp.getData().getClient().getId());
         Assertions.assertEquals(taskName, resp.getData().getDescription());
     }
 
