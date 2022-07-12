@@ -44,6 +44,7 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
             "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "com.github.javafaker:javafaker:$javaFakerVersion"
     )
 }
