@@ -9,7 +9,8 @@ import static tests.specification.Specs.request;
 import static tests.specification.Specs.response200;
 
 public class PreRequestTask {
-    static public Integer getIdTask() {
+    public Integer getIdTask() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         Long epoch = System.currentTimeMillis();
         Long epochPlus = System.currentTimeMillis() + 3600000;
         RequestAddTask body = new RequestAddTask();
@@ -24,7 +25,7 @@ public class PreRequestTask {
         body.setDescription("Новая задача");
         return given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", token.getTokenAdmin())
                 .body(body)
                 .queryParam("on_hold", false)
                 .contentType(JSON)
@@ -34,10 +35,11 @@ public class PreRequestTask {
                 .extract().path("data.id");
     }
 
-    static public void deleteTask(Integer value) {
+    public void deleteTask (Integer value) {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", token.getTokenAdmin())
                 .pathParam("id", value)
                 .contentType(JSON)
                 .when()

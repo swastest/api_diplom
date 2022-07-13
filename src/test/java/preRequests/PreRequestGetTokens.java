@@ -6,7 +6,7 @@ import static tests.specification.Specs.request;
 
 public class PreRequestGetTokens {
 
-    static public String getTokenAdmin() {
+    public String getTokenAdmin() {
         return given()
                 .spec(request)
                 .queryParam("password", ConfigCenter.configAdm.passwordAdmin())
@@ -16,7 +16,7 @@ public class PreRequestGetTokens {
                 .extract().response().getHeader("Auth-Token");
     }
 
-    static public String getTokenManager() {
+    public String getTokenManager() {
         return given()
                 .spec(request)
                 .queryParam("password", ConfigCenter.configMng.passwordManager())
@@ -26,7 +26,7 @@ public class PreRequestGetTokens {
                 .extract().response().getHeader("Auth-Token");
     }
 
-    static public String getTokenTech() {
+    public  String getTokenTech() {
         return given()
                 .spec(request)
                 .queryParam("password", ConfigCenter.configTech.passwordTech())

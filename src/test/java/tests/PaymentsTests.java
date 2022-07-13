@@ -58,6 +58,7 @@ public class PaymentsTests {
     @AllureId("11044")
     @DisplayName("Оплата проставлена Админом технику")
     void addPaymentAdminToTech() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         String paymentComment = "Хорошая оплата такая";
         Long epoch = System.currentTimeMillis();
 
@@ -72,7 +73,7 @@ public class PaymentsTests {
         given()
                 .spec(request)
                 .body(new RequestPaymentsItem[]{item})
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", token.getTokenAdmin())
                 .when()
                 .post("/payments")
                 .then()

@@ -7,6 +7,8 @@ import preRequests.PreRequestGetTokens;
 import java.util.stream.Stream;
 
 public class Params {
+
+
     static Stream<Arguments> loginPasswordParamsAdminManagerTech() {
         return Stream.of
                 (Arguments.of(ConfigCenter.configAdm.passwordAdmin(), ConfigCenter.configAdm.emailAdmin(), "Админ"),
@@ -16,17 +18,19 @@ public class Params {
     }
 
     static Stream<Arguments> preRequestParamTokenAdminManagerAndUserId() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         return Stream.of
-                (Arguments.of( PreRequestGetTokens.getTokenAdmin(), ConfigCenter.configAdm.idAdminUser(), "Админ"),
-                        Arguments.of( PreRequestGetTokens.getTokenManager(), ConfigCenter.configMng.idManagerUser(), "Менеджер")
+                (Arguments.of(token.getTokenAdmin(), ConfigCenter.configAdm.idAdminUser(), "Админ"),
+                        Arguments.of(token.getTokenManager(), ConfigCenter.configMng.idManagerUser(), "Менеджер")
                 );
     }
 
     static Stream<Arguments> preRequestParamTokenAdminManagerTech() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         return Stream.of
-                (Arguments.of(PreRequestGetTokens.getTokenAdmin(), "Админ"),
-                        Arguments.of(PreRequestGetTokens.getTokenManager(), "Менеджер"),
-                        Arguments.of(PreRequestGetTokens.getTokenTech(), "Техник")
+                (Arguments.of(token.getTokenAdmin(), "Админ"),
+                        Arguments.of(token.getTokenManager(), "Менеджер"),
+                        Arguments.of(token.getTokenTech(), "Техник")
                 );
     }
 }

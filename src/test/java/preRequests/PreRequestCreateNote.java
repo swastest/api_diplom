@@ -9,14 +9,15 @@ import static tests.specification.Specs.request;
 import static tests.specification.Specs.response200;
 
 public class PreRequestCreateNote {
-    static public Integer getIdNewNoteTeamFromAdmin() {
+    public Integer getIdNewNoteTeamFromAdmin() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         Faker faker = new Faker();
         Long epoch = System.currentTimeMillis();
         String testTxt = faker.backToTheFuture().quote();
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, ConfigCenter.configTeam.teamId(), 0, testTxt, 0);
         return given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", token.getTokenAdmin())
                 .body(body)
                 .when()
                 .put("/notes")
@@ -25,14 +26,15 @@ public class PreRequestCreateNote {
                 .extract().jsonPath().get("data.id");
     }
 
-    static public Integer getIdNewNoteTeamFromManager() {
+    public Integer getIdNewNoteTeamFromManager() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         Long epoch = System.currentTimeMillis();
         Faker faker = new Faker();
         String testTxt = faker.backToTheFuture().quote();
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, ConfigCenter.configTeam.teamId(), 0, testTxt, 0);
         return given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenManager())
+                .header("Authorization", token.getTokenManager())
                 .body(body)
                 .when()
                 .put("/notes")
@@ -41,14 +43,15 @@ public class PreRequestCreateNote {
                 .extract().jsonPath().get("data.id");
     }
 
-    static public Integer getIdNewNoteTechToSelf() {
+    public Integer getIdNewNoteTechToSelf() {
+        PreRequestGetTokens token = new PreRequestGetTokens();
         Long epoch = System.currentTimeMillis();
         Faker faker = new Faker();
         String testTxt = faker.backToTheFuture().quote();
         CreateOrUpdateNoteDto body = new CreateOrUpdateNoteDto(epoch, 0, 0, testTxt, ConfigCenter.configTech.idTechUser());
         return given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenTech())
+                .header("Authorization", token.getTokenTech())
                 .body(body)
                 .when()
                 .put("/notes")

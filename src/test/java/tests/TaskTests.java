@@ -37,9 +37,12 @@ public class TaskTests {
         body.setUserId(ConfigCenter.configTech.idTechUser());
         body.setId(0);
         body.setDescription(taskName);
+
+        PreRequestTask task = new PreRequestTask();
+        PreRequestGetTokens tokens = new PreRequestGetTokens();
         ResponseAddNewTask resp = given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", tokens.getTokenAdmin())
                 .body(body)
                 .queryParam("on_hold", false)
                 .contentType(JSON)
@@ -48,7 +51,7 @@ public class TaskTests {
                 .then()
                 .spec(response200)
                 .extract().as(ResponseAddNewTask.class);
-        PreRequestTask.deleteTask(resp.getData().getId());
+        task.deleteTask(resp.getData().getId());
         Assertions.assertEquals(ConfigCenter.configClient.idClient(), resp.getData().getClient().getId());
         Assertions.assertEquals(taskName, resp.getData().getDescription());
     }
@@ -57,10 +60,12 @@ public class TaskTests {
     @AllureId("11046")
     @DisplayName("Админ меняет статус новой задачи на 'in_progress'")
     void AdminEditingTaskStatusInProgress() {
-        Integer idTask = PreRequestTask.getIdTask();
+        PreRequestGetTokens tokens = new PreRequestGetTokens();
+        PreRequestTask task = new PreRequestTask();
+        Integer idTask = task.getIdTask();
         given()
                 .spec(request)
-                .header("Authorization", PreRequestGetTokens.getTokenAdmin())
+                .header("Authorization", tokens.getTokenAdmin())
                 .queryParam("status", "in_progress")
                 .pathParam("id", idTask)
                 .when().log().all()
@@ -68,6 +73,6 @@ public class TaskTests {
                 .then().log().all()
                 .spec(response200)
                 .body("status", is("SUCCESS"));
-        PreRequestTask.deleteTask(idTask);
+        task.deleteTask(idTask);
     }
 }
