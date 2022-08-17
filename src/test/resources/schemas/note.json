@@ -1,0 +1,75 @@
+{
+  "message": null,
+  "status": "SUCCESS",
+  "data": {
+    "id": 789,
+    "user": {
+      "id": 57,
+      "name": "Mario",
+      "email": "mary@mail.ru",
+      "address": "ул. Юлиуса Фучика, 92А, Казань, Респ. Татарстан, Россия, 420140",
+      "role": {
+        "id": 1,
+        "name": "Техник",
+        "code": "technician"
+      },
+      "org": {
+        "id": 15,
+        "name": null,
+        "endLicenseDate": null,
+        "note": null,
+        "removed": false,
+        "setting": null,
+        "userCount": 0
+      },
+      "lat": 55.7663269,
+      "lon": 49.2326851,
+      "setting": {
+        "id": 51,
+        "displayPush": false
+      },
+      "removed": false,
+      "note": "The best plumber in the world.",
+      "active": true,
+      "showInCalendar": true,
+      "phones": null,
+      "deviceType": {
+        "id": 1,
+        "name": "Personal",
+        "code": "personal_device"
+      }
+    },
+    "team": null,
+    "text": "Hey, hey, listen, guys... Look, I don't wanna mess with no reefer addicts, okay?",
+    "date": 1660757513307,
+    "owner": {
+      "id": 32,
+      "name": "Manager",
+      "email": null,
+      "address": null,
+      "role": {
+        "id": 0,
+        "name": null,
+        "code": "manager"
+      },
+      "org": {
+        "id": 15,
+        "name": null,
+        "endLicenseDate": null,
+        "note": null,
+        "removed": false,
+        "setting": null,
+        "userCount": 0
+      },
+      "lat": 0.0,
+      "lon": 0.0,
+      "setting": null,
+      "removed": false,
+      "note": null,
+      "active": false,
+      "showInCalendar": true,
+      "phones": null,
+      "deviceType": null
+    }
+  }
+}

@@ -1,6 +1,7 @@
 package preRequests;
 
 import config.ConfigCenter;
+
 import static io.restassured.RestAssured.given;
 import static tests.specification.Specs.request;
 
