@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id "io.qameta.allure" version "2.9.6"
     id "io.freefair.lombok" version "6.0.0-m2"
+    id 'org.gradle.test-retry' version '1.0.0'
 }
 
 repositories {
@@ -51,6 +52,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    retry {
+        failOnPassedAfterRetry = true
+        maxFailures = 10
+        maxRetries = 2
+    }
 }
 
 compileTestJava {
